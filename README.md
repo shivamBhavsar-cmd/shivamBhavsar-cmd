@@ -1,6 +1,6 @@
 [![MasterHead](https://firebasestorage.googleapis.com/v0/b/flexi-coding.appspot.com/o/dempgi7-520f8d5f-63d4-4453-8822-dbc149ae27f8.gif?alt=media&token=91c0c7b2-93c3-4029-b011-1a8703c5730d)](https://rishavchanda.io)
 <h1 align="center">Hi 👋, I'm Shivam Bhavsar</h1>
-<h3 align="center">A passionate full stack developer from India</h3>
+<h3 align="center">A passionate DevSecOps engineer.</h3>
 <div align="center">
   <img src="https://cdn.dribbble.com/users/1162077/screenshots/3848914/programmer.gif" alt="Coding" width="400">
 </div>
@@ -10,19 +10,29 @@
 
 <p align="left"> <a href="https://twitter.com/shivam bhavsar" target="blank"><img src="https://img.shields.io/twitter/follow/shivam bhavsar?logo=twitter&style=for-the-badge" alt="shivam bhavsar" /></a> </p>
 
-- 🔭 I’m currently working on **Open Source Projects, React , DevOps**
+- 🔭 I’m currently working as **DevOps Engineer**
 
-- 🌱 I’m currently learning **React,MomgoDB,Node.js,API's,JavaScript, .NET.,django.**
+- 🌱 I’m currently learning **Kubernetes, Jenkins, Ansible, Terraform, Istio, grafana , prometheus, Docker, Helm, ELK Stack**
 
-- 👯 I’m looking to collaborate on **Open Source Projects, Frontend Development**
+- Things i know : **Kubernetes, Jenkins, Ansible, Terraform, Istio,Docker, grafana , prometheus, Helm , AWS , ArgoCD, React,MomgoDB,Node.js,API's,JavaScript.**   
+
+- 👯 I’m looking to collaborate on **DevOps projects.**
 
 - 👨‍💻 All of my projects are available at [https://shivambhavsar-cmd.github.io/Shivam-Bhavsar-Portfolio/](https://shivambhavsar-cmd.github.io/Shivam-Bhavsar-Portfolio/)
 
-- 💬 Ask me about **C,C++,Python and Full Stack Development**
+- 💬 Ask me about **DevOps and Full Stack Development**
 
 - 📫 How to reach me **shivambuggs@gmail.com**
 
 - ⚡ Fun fact **I think I am funny**
+
+#### OS Stack
+<p align="left"><img src="https://brandlogos.net/wp-content/uploads/2020/03/Linux-logo.png" alt="linux" title="linux" width="40" height="40"/>  <img src="https://www.vectorlogo.zone/logos/ubuntu/ubuntu-icon.svg" alt="ubuntu" title="ubuntu" width="40" height="40"/>  <img src="https://www.vectorlogo.zone/logos/alpinelinux/alpinelinux-icon.svg" alt="alpine" title="alpine" width="40" height="40"/> <img src="https://www.vectorlogo.zone/logos/centos/centos-icon.svg" alt="centOS" title="centOS" width="40" height="40"/> </p>
+#### DevOps Stack 
+<p align="left"><img src="https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg" alt="aws" title="aws" width="40" height="40"/> <img src="https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg" alt="gcp" title="gcp" width="40" height="40"/>  <img src="https://www.vectorlogo.zone/logos/ansible/ansible-icon.svg" alt="ansible" title="ansible" width="40" height="40"/> <img src="https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg" alt="terraform" title="terraform" width="40" height="40"/> <img src="https://www.vectorlogo.zone/logos/jenkins/jenkins-icon.svg" alt="jenkins" title="jenkins" width="40" height="40"/>  <img src="https://www.vectorlogo.zone/logos/circleci/circleci-icon.svg" alt="circleci" title="circleci" width="40" height="40"/> <img src="https://www.vectorlogo.zone/logos/codeship/codeship-icon.svg" alt="codeship" title="codeship" width="40" height="40"/> <img src="https://www.vectorlogo.zone/logos/atlassian_bamboo/atlassian_bamboo-icon.svg" alt="bamboo" title="bamboo" width="40" height="40"/> <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/docker/docker.png" alt="docker" title="docker" width="40" height="40"/>  <img src="https://www.vectorlogo.zone/logos/goharborio/goharborio-icon.svg" alt="harbor" title="harbor" width="40" height="40"/> <img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" alt="kubernetes" title="kubernetes" width="40" height="40"/>  <img src="https://www.vectorlogo.zone/logos/helmsh/helmsh-icon.svg" alt="harbor" title="harbor" width="40" height="40"/> <img src="https://www.vectorlogo.zone/logos/traefikio/traefikio-icon.svg" alt="traefik" title="traefik" width="40" height="40"/> <img src="https://raw.githubusercontent.com/github/explore/85cceaeeaf993ca35664dc37ea24f9237fbbfc14/topics/nginx/nginx.png" alt="nginx" title="nginx" width="40" height="40"/>  <img src="https://www.vectorlogo.zone/logos/elasticco_logstash/elasticco_logstash-icon.svg" alt="logstash" title="logstash" width="40" height="40"/> <img src="https://www.vectorlogo.zone/logos/elasticco_kibana/elasticco_kibana-icon.svg" alt="kibana" title="kibana" width="40" height="40"/> <img src="https://www.vectorlogo.zone/logos/prometheusio/prometheusio-icon.svg" alt="promethues" title="promethues" width="40" height="40"/> <img src="https://www.vectorlogo.zone/logos/graphiteapp/graphiteapp-icon.svg" alt="graphite" title="graphite" width="40" height="40"/> <img src="https://www.vectorlogo.zone/logos/grafana/grafana-icon.svg" alt="grafana" title="grafana" width="40" height="40"/> </p>
+
+#### Project Management Stack
+<p align="left"><img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" title="git" width="40" height="40"/>  <img src="https://www.vectorlogo.zone/logos/github/github-icon.svg" alt="github" title="github" width="40" height="40"/> <img src="https://www.vectorlogo.zone/logos/bitbucket/bitbucket-icon.svg" alt="bitbucket" title="bitbucket" width="40" height="40"/>  <img src="https://www.vectorlogo.zone/logos/atlassian_jira/atlassian_jira-icon.svg" alt="jira" title="jira" width="40" height="40"/> <img src="https://www.vectorlogo.zone/logos/trello/trello-icon.svg" alt="trello" title="trello" width="40" height="40"/></p>
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
