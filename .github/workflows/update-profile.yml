@@ -2,42 +2,64 @@ name: Update Profile Daily
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 0 * * *' # runs every day at midnight UTC
   workflow_dispatch:
 
 jobs:
-  build:
+  update-profile:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      # 🧹 Ensure a clean workspace before fetching the repo
+      - name: Cleanup workspace before checkout
+        run: |
+          rm -rf $GITHUB_WORKSPACE/*
+
+      # ✅ Checkout repository cleanly
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          clean: true  # automatically removes untracked files like profile.svg before checkout
 
+      # 🐍 Setup Python
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
+      # 📦 Install dependencies
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
 
-      - name: Commit and Push if Changed
+      # 🖋️ Generate & Commit Updated SVG
+      - name: Generate and Commit profile.svg
         run: |
           set -e
           CURRENT_DATE=$(date +'%d/%m/%y')
+
+          # Configure Git
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GH_KEY }}@github.com/${{ github.repository }}
+
+          # Ensure latest code
           git fetch origin main
           git checkout main || git checkout -b main
           git reset --hard origin/main
-          git clean -fd
+          git clean -fd  # remove untracked files
+
+          # Generate SVG
           python generate_svg.py
+
+          # Commit and push only if changed
           git add profile.svg
-          git diff --cached --quiet || git commit -m "Update Profile - ${CURRENT_DATE}"
-          git push origin main
+          if ! git diff --cached --quiet; then
+            git commit -m "Update Profile - ${CURRENT_DATE}"
+            git push origin main
+          else
+            echo "No changes to commit."
+          fi
         env:
           GH_KEY: ${{ secrets.GH_KEY }}
