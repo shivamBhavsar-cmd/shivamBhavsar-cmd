@@ -2,7 +2,7 @@ name: Update Profile Daily
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 0 * * *'   # run daily at midnight UTC
   workflow_dispatch:
 
 jobs:
@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          clean: true
+          clean: true   # ensures no untracked files exist before checkout
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -29,18 +29,21 @@ jobs:
           set -e
           CURRENT_DATE=$(date +'%d/%m/%y')
 
-          git config --global user.name 'github-actions'
-          git config --global user.email 'github-actions@github.com'
+          # Configure Git
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
           git remote set-url origin https://x-access-token:${{ secrets.GH_KEY }}@github.com/${{ github.repository }}
 
-          # 👇 This replaces the problematic git pull
+          # 🔄 Make sure branch is clean (NO git pull!)
           git fetch origin main
           git checkout main || git checkout -b main
           git reset --hard origin/main
           git clean -fd
 
+          # 🖋️ Generate new profile.svg
           python generate_svg.py
 
+          # ✅ Commit only if there are changes
           git add profile.svg
           if ! git diff --cached --quiet; then
             git commit -m "Update Profile - ${CURRENT_DATE}"
