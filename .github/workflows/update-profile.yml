@@ -24,22 +24,20 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Generate SVG
-        run: python generate_svg.py
-        env:
-          GH_KEY: ${{ secrets.GH_KEY }}
-
       - name: Commit and Push if Changed
         run: |
+          set -e
           CURRENT_DATE=$(date +'%d/%m/%y')
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GH_KEY }}@github.com/${{ github.repository }}
           git fetch origin main
+          git checkout main || git checkout -b main
           git reset --hard origin/main
+          git clean -fd
           python generate_svg.py
           git add profile.svg
           git diff --cached --quiet || git commit -m "Update Profile - ${CURRENT_DATE}"
-          git push
+          git push origin main
         env:
           GH_KEY: ${{ secrets.GH_KEY }}
