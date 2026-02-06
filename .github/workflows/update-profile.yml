@@ -2,7 +2,7 @@ name: Update Profile Daily
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 0 * * *'   # run every day at midnight UTC
   workflow_dispatch:
 
 jobs:
@@ -10,31 +10,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 🧹 Step 1: Clean the workspace *before* checkout
-      - name: Clean workspace before checkout
-        run: |
-          echo "Cleaning workspace before checkout..."
-          sudo rm -rf $GITHUB_WORKSPACE/*
-          echo "Workspace cleaned."
-
-      # ✅ Step 2: Checkout the repo cleanly
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          clean: true  # force deletes untracked files before checkout
+          clean: true   # ensures workspace is clean before checkout
 
-      # 🐍 Step 3: Setup Python
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      # 📦 Step 4: Install dependencies
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      # 🖋️ Step 5: Generate & Commit profile.svg
       - name: Generate and Commit profile.svg
         run: |
           set -e
@@ -44,13 +33,16 @@ jobs:
           git config --global user.email 'github-actions@github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GH_KEY }}@github.com/${{ github.repository }}
 
+          # ✅ Ensure clean copy of main branch (no merge)
           git fetch origin main
           git checkout main || git checkout -b main
           git reset --hard origin/main
           git clean -fd
 
+          # 🖋️ Generate the SVG
           python generate_svg.py
 
+          # ✅ Commit & push only if changed
           git add profile.svg
           if ! git diff --cached --quiet; then
             git commit -m "Update Profile - ${CURRENT_DATE}"
