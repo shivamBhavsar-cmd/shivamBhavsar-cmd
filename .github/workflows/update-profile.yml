@@ -2,7 +2,7 @@ name: Update Profile Daily
 
 on:
   schedule:
-    - cron: '0 0 * * *' # runs every day at midnight UTC
+    - cron: '0 0 * * *'
   workflow_dispatch:
 
 jobs:
@@ -10,50 +10,47 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 🧹 Ensure a clean workspace before fetching the repo
-      - name: Cleanup workspace before checkout
+      # 🧹 Step 1: Clean the workspace *before* checkout
+      - name: Clean workspace before checkout
         run: |
-          rm -rf $GITHUB_WORKSPACE/*
+          echo "Cleaning workspace before checkout..."
+          sudo rm -rf $GITHUB_WORKSPACE/*
+          echo "Workspace cleaned."
 
-      # ✅ Checkout repository cleanly
+      # ✅ Step 2: Checkout the repo cleanly
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          clean: true  # automatically removes untracked files like profile.svg before checkout
+          clean: true  # force deletes untracked files before checkout
 
-      # 🐍 Setup Python
+      # 🐍 Step 3: Setup Python
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      # 📦 Install dependencies
+      # 📦 Step 4: Install dependencies
       - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
-      # 🖋️ Generate & Commit Updated SVG
+      # 🖋️ Step 5: Generate & Commit profile.svg
       - name: Generate and Commit profile.svg
         run: |
           set -e
           CURRENT_DATE=$(date +'%d/%m/%y')
 
-          # Configure Git
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GH_KEY }}@github.com/${{ github.repository }}
 
-          # Ensure latest code
           git fetch origin main
           git checkout main || git checkout -b main
           git reset --hard origin/main
-          git clean -fd  # remove untracked files
+          git clean -fd
 
-          # Generate SVG
           python generate_svg.py
 
-          # Commit and push only if changed
           git add profile.svg
           if ! git diff --cached --quiet; then
             git commit -m "Update Profile - ${CURRENT_DATE}"
