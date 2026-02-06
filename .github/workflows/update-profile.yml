@@ -35,12 +35,11 @@ jobs:
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GH_KEY }}@github.com/${{ github.repository }}
-          git clean -fd
-          git fetch origin main
-          git checkout -B main origin/main
-          python generate_svg.py
+          git stash -u
+          git pull
+          git stash pop || true
           git add profile.svg
           git commit -m "Update Profile - ${CURRENT_DATE}" || echo "No changes"
-          git push origin main
+          git push
         env:
           GH_KEY: ${{ secrets.GH_KEY }}
